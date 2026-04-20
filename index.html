@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="contenedor">
+        <h1>Mini Pokédex</h1>
+
+        <div class="buscador">
+            <input id="pokemonInput" type="text" placeholder="Escribí un Pokémon">
+            <button id="buscarBtn">Buscar</button>
+        </div>
+
+        <p id="loading" class="oculto">Cargando...</p>
+        <p id="error" class="error"></p>
+
+        <section id="resultado"></section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
