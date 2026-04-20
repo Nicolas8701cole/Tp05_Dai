@@ -11,12 +11,15 @@ boton.onclick = async function () {
         mostrarError("Escriví algo sin verguenza")
         return
     }
+    mostrarLoading(true)
     try {
         const pokemon = await pedirPokemon(supuestoPokemon)
         mostrarPokemon(pokemon)
 
     } catch {
         mostrarError("No se encontró ese Pokémon.")
+    }finally{
+    mostrarLoading(false)
     }
 }
 async function pedirPokemon(params) {
@@ -41,7 +44,7 @@ function mostrarPokemon(pokemon) {
       <h2>${pokemon.name}</h2>
       <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
       <p><strong>Tipo(s):</strong> ${tipos}</p>
-      <p><strong>Peso:</strong> ${pokemon.weight} )en pounds)</p>
+      <p><strong>Peso:</strong> ${pokemon.weight / 10} KG</p>
       <p><strong>Altura:</strong> ${pokemon.height}</p>
     </article>
   `
@@ -53,4 +56,12 @@ function mostrarError(texto) {
 function limpiarPantalla() {
     resultado.innerHTML = ""
     errror.textContent = ""
+}
+
+function mostrarLoading(estado) {
+    if (estado === true) {
+        loading.classList.remove("oculto")
+    } else {
+        loading.classList.add("oculto")
+    }
 }
