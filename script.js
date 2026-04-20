@@ -8,7 +8,7 @@ boton.onclick = async function () {
     const supuestoPokemon = input.value.toLowerCase().trim()
     limpiarPantalla()
     if (supuestoPokemon === "") {
-        error("Escriví algo sin verguenza")
+        mostrarError("Escriví algo sin verguenza")
         return
     }
     try {
@@ -16,7 +16,7 @@ boton.onclick = async function () {
         mostrarPokemon(pokemon)
 
     } catch {
-        error("No se encontró ese Pokémon.")
+        mostrarError("No se encontró ese Pokémon.")
     }
 }
 async function pedirPokemon(params) {
@@ -24,7 +24,7 @@ async function pedirPokemon(params) {
     const respuesta = await fetch(url)
 
     if (!respuesta.ok) {
-        error("Pokémon no encontrado")
+        mostrarError("Pokémon no encontrado")
     }
     const data = await respuesta.json()
     return data
@@ -41,16 +41,16 @@ function mostrarPokemon(pokemon) {
       <h2>${pokemon.name}</h2>
       <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
       <p><strong>Tipo(s):</strong> ${tipos}</p>
-      <p><strong>Peso:</strong> ${pokemon.weight}</p>
+      <p><strong>Peso:</strong> ${pokemon.weight} )en pounds)</p>
       <p><strong>Altura:</strong> ${pokemon.height}</p>
     </article>
   `
 }
 
 function mostrarError(texto) {
-    mostrarError.textContent = texto
+    errror.textContent = texto
 }
 function limpiarPantalla() {
     resultado.innerHTML = ""
-    error.textContent = ""
+    errror.textContent = ""
 }
